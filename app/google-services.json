@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1062382642171",
+    "project_id": "tea-quality-kotlin",
+    "storage_bucket": "tea-quality-kotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062382642171:android:f2a746fc9dcff4cdb1615e",
+        "android_client_info": {
+          "package_name": "com.example.teaqualitykotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1062382642171-8q28ffrt9n6uuq1fu7l4oag2i98seh2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB938gwOepak4pgRHjgIJci7Fgt4s0I8XE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1062382642171-8q28ffrt9n6uuq1fu7l4oag2i98seh2k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
