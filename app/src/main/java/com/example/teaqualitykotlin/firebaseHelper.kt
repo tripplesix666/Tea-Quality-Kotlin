@@ -19,7 +19,7 @@ const val CHILD_IMAGE = "image"
 const val CHILD_NAME = "name"
 const val CHILD_PRICE = "price"
 const val CHILD_DETAILS = "details"
-
+// [eq
 fun initFirebase() {
     firebaseAuth = FirebaseAuth.getInstance()
     REF_DATABASE_ROOT = FirebaseDatabase.getInstance().reference
