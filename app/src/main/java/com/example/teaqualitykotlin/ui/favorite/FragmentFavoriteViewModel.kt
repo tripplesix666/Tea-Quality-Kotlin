@@ -47,20 +47,22 @@ class FragmentFavoriteViewModel(
 
     }
 
-    fun populateBd() {
+    fun populateDb() {
         initFirebase()
         for (tea in teasService.teasHome) {
             val id = tea.id
-            var photoUrl = "default1"
-//            val path = REF_STORAGE_ROOT.child(FOLDER_IMAGES).child("1")
-//            path.downloadUrl.addOnCompleteListener {
-//                if (it.isSuccessful) {
-//                    photoUrl = it.result.toString()
-//                }
-//            }
-            REF_STORAGE_ROOT.child("/teasImage/1.png").downloadUrl.addOnSuccessListener {
+            var photoUrl = "default"
+            val path = REF_STORAGE_ROOT.child(FOLDER_IMAGES).child("1").child("1.png")
+            path.downloadUrl.addOnCompleteListener {
+                if (it.isSuccessful) {
+                    photoUrl = it.result.toString()
+                }
+            }.addOnFailureListener {
                 photoUrl = it.toString()
             }
+//            REF_STORAGE_ROOT.child("/teasImage/1.png").downloadUrl.addOnSuccessListener {
+//                photoUrl = it.toString()
+//            }
             val dateMap = mutableMapOf<String, Any>()
 //            dateMap[CHILD_ID] = tea.id
             dateMap[CHILD_IMAGE] = photoUrl
