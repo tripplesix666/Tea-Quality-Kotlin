@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.teaqualitykotlin.R
 import com.example.teaqualitykotlin.Tea
 import com.example.teaqualitykotlin.databinding.ItemTeaHomeBinding
+import com.squareup.picasso.Picasso
 
 interface TeaActionListener {
 
@@ -63,9 +64,11 @@ class AdapterHomeTeas(
         with(holderHome.binding) {
             holderHome.itemView.tag = tea
             favoriteImageViewButton.tag = tea
-            teaNameTextView.text = tea.productName
-            teaPriceTextView.text = tea.productPrice
-            teaImageView.setImageResource(tea.productImage)
+            teaNameTextView.text = tea.name
+            teaPriceTextView.text = tea.price
+            Picasso.get()
+                .load(tea.image)
+                .into(teaImageView)
 //            teaImageView.setImageResource(R.drawable.tea)
         }
     }

@@ -55,7 +55,7 @@ class FragmentFavorite : Fragment() {
 //            binding.countTextView.text = viewModel.count(adapter)
 //        }
         binding.favoriteTextView.setOnClickListener {
-            viewModel.populateDb()
+//            viewModel.populateDb()
         }
 
 

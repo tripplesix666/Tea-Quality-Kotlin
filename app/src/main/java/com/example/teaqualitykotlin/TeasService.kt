@@ -1,7 +1,5 @@
 package com.example.teaqualitykotlin
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -75,7 +73,7 @@ class TeasService {
         if (searchText.isNotEmpty()) {
 
             teasHome.forEach {
-                if (it.productName.lowercase().contains(searchText)) {
+                if (it.name.lowercase().contains(searchText)) {
                     teasSearch.add(it)
                     notifyChangesSearch()
                 }
@@ -149,12 +147,12 @@ class TeasService {
         REF_DATABASE_ROOT.child(NODE_TEAS).get().addOnSuccessListener {
             var jsonString = it.value.toString().replace(" ","")
             jsonString = stringToJson(jsonString)
-            val type = Types.newParameterizedType(MutableList::class.java, TeaTest::class.java)
-            val teaListAdapter = moshi.adapter<MutableList<TeaTest?>>(type)
+            val type = Types.newParameterizedType(MutableList::class.java, Tea::class.java)
+            val teaListAdapter = moshi.adapter<MutableList<Tea>>(type)
             val newTeaList = teaListAdapter.fromJson(jsonString)
 
             for (t in newTeaList!!) {
-                teaTest.add(t!!)
+                teasHome.add(t)
             }
 //        Log.d(TAG, "retrieveDB: $teaTest")
         }
@@ -188,7 +186,7 @@ class TeasService {
     private fun populateTeaHome (){
         val tea0 = Tea(
             0,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F2.png?alt=media&token=f6f3a4b7-6237-49a2-8f83-b0650a235dcd",
             "Габа",
             "249 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
@@ -196,7 +194,7 @@ class TeasService {
         teasHome.add(tea0)
         val tea1 = Tea(
             1,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F1%2F1.png?alt=media&token=0615e24f-ad81-4d2a-9c18-a79b1337a4ea",
             "Габа",
             "249 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
@@ -205,7 +203,7 @@ class TeasService {
 
         val tea2 = Tea(
             2,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F1%2F1.png?alt=media&token=0615e24f-ad81-4d2a-9c18-a79b1337a4ea",
             "Женьшеневый Улун",
             "349 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
@@ -214,7 +212,7 @@ class TeasService {
 
         val tea3 = Tea(
             3,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F1%2F1.png?alt=media&token=0615e24f-ad81-4d2a-9c18-a79b1337a4ea",
             "Шу Пуэр",
             "449 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
@@ -223,7 +221,7 @@ class TeasService {
 
         val tea4 = Tea(
             4,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F1%2F1.png?alt=media&token=0615e24f-ad81-4d2a-9c18-a79b1337a4ea",
             "Тегуанинь",
             "549 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
@@ -232,7 +230,7 @@ class TeasService {
 
         val tea5 = Tea(
             5,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F1%2F1.png?alt=media&token=0615e24f-ad81-4d2a-9c18-a79b1337a4ea",
             "Габа",
             "249 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
@@ -241,7 +239,7 @@ class TeasService {
 
         val tea6 = Tea(
             6,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F1%2F1.png?alt=media&token=0615e24f-ad81-4d2a-9c18-a79b1337a4ea",
             "Женьшеневый Улун",
             "349 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
@@ -250,7 +248,7 @@ class TeasService {
 
         val tea7 = Tea(
             7,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F1%2F1.png?alt=media&token=0615e24f-ad81-4d2a-9c18-a79b1337a4ea",
             "Шу Пуэр",
             "449 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
@@ -259,7 +257,7 @@ class TeasService {
 
         val tea8 = Tea(
             8,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F1%2F1.png?alt=media&token=0615e24f-ad81-4d2a-9c18-a79b1337a4ea",
             "Тегуанинь",
             "549 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
@@ -272,7 +270,7 @@ class TeasService {
 
         val tea1 = Tea(
             1,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F1%2F1.png?alt=media&token=0615e24f-ad81-4d2a-9c18-a79b1337a4ea",
             "Габа",
             "249 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
@@ -283,7 +281,7 @@ class TeasService {
     private fun populateTeaFavorite() {
         val tea1 = Tea(
             1,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F1%2F1.png?alt=media&token=0615e24f-ad81-4d2a-9c18-a79b1337a4ea",
             "Габа",
             "249 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
@@ -292,7 +290,7 @@ class TeasService {
 
         val tea2 = Tea(
             2,
-            R.drawable.tea,
+            "https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F1%2F1.png?alt=media&token=0615e24f-ad81-4d2a-9c18-a79b1337a4ea",
             "Женьшеневый Улун",
             "349 Р",
             "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"

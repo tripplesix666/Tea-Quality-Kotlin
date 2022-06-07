@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.teaqualitykotlin.databinding.ItemTeaCartBinding
+import com.squareup.picasso.Picasso
 
 interface TeaCartActionListener {
 
@@ -66,9 +67,12 @@ class AdapterCartTeas(
             closeImageViewButton.tag = tea
             plusImageViewButton.tag = tea
             minusImageViewButton.tag = tea
-            teaNameTextView.text = tea.productName
-            teaPriceTextView.text = tea.productPrice
-            teaImageView.setImageResource(tea.productImage)
+            teaNameTextView.text = tea.name
+            teaPriceTextView.text = tea.price
+            Picasso.get()
+                .load(tea.image)
+                .into(teaImageView)
+//            teaImageView.setImageResource(tea.image)
         }
     }
 

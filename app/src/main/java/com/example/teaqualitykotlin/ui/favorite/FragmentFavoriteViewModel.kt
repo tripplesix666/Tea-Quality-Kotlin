@@ -1,9 +1,5 @@
 package com.example.teaqualitykotlin.ui.favorite
 
-import android.content.ContentValues.TAG
-import android.content.Context
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -58,8 +54,8 @@ class FragmentFavoriteViewModel(
 
             val dateMap = mutableMapOf<String, Any>()
             dateMap[CHILD_ID] = tea.id
-            dateMap[CHILD_NAME] = tea.productName
-            dateMap[CHILD_PRICE] = tea.productPrice
+            dateMap[CHILD_NAME] = tea.name
+            dateMap[CHILD_PRICE] = tea.price
             dateMap[CHILD_DETAILS] = tea.details
 
             REF_DATABASE_ROOT.child(NODE_TEAS).child(id).updateChildren(dateMap)

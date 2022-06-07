@@ -12,7 +12,6 @@ import androidx.lifecycle.Observer
 import com.example.teaqualitykotlin.R
 import com.example.teaqualitykotlin.databinding.FragmentProductPageBinding
 import com.example.teaqualitykotlin.factory
-import com.example.teaqualitykotlin.navigator
 
 class TeaProductPageFragment : Fragment() {
 
@@ -32,10 +31,10 @@ class TeaProductPageFragment : Fragment() {
         binding = FragmentProductPageBinding.inflate(inflater, container, false)
 
         viewModel.teaDetails.observe(viewLifecycleOwner, Observer {
-            binding.teaNameTextView.text = it.tea.productName
+            binding.teaNameTextView.text = it.tea.name
             binding.teaImageView.setImageResource(R.drawable.tea)
             binding.productDescription.text = it.details
-            binding.teaPriceTextView.text = it.tea.productPrice
+            binding.teaPriceTextView.text = it.tea.price
         })
 
         binding.addToCartButton.setOnClickListener {
