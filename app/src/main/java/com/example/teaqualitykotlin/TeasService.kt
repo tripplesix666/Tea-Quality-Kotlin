@@ -1,12 +1,16 @@
 package com.example.teaqualitykotlin
 
-import android.widget.Toast
-import com.github.javafaker.Faker
-import java.util.*
+import android.content.ContentValues.TAG
+import android.util.Log
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 typealias TeasListener = (teas: List<Tea>) -> Unit
 
 class TeasService {
+
+    private var teaTest = mutableListOf<TeaTest>()
 
     var teasHome = mutableListOf<Tea>()
     private var teasFavorite = mutableListOf<Tea>()
@@ -137,9 +141,59 @@ class TeasService {
 
 
 //Заполнение листов
+    fun retrieveDB() {
+    val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
+        REF_DATABASE_ROOT.child(NODE_TEAS).get().addOnSuccessListener {
+            var jsonString = it.value.toString().replace(" ","")
+            jsonString = stringToJson(jsonString)
+            val type = Types.newParameterizedType(MutableList::class.java, TeaTest::class.java)
+            val teaListAdapter = moshi.adapter<MutableList<TeaTest?>>(type)
+            val newTeaList = teaListAdapter.fromJson(jsonString)
+
+            for (t in newTeaList!!) {
+                teaTest.add(t!!)
+            }
+//        Log.d(TAG, "retrieveDB: $teaTest")
+        }
+    }
+
+    private fun stringToJson(badString: String): String {
+        var json = ""
+
+        for (s in badString.toCharArray().indices) {
+            if (badString[s] == '}' && badString[s + 1] == '{') {
+                json += ""
+            }
+            else if (badString[s] == '{') {
+                json += "{\""
+            } else if (badString[s] == '=' && badString[s - 1] != 't' && badString[s - 1] != 'n') {
+                json += "\":\""
+            } else if (badString[s] == ',' && badString[s - 1] != '}') {
+                json += "\",\""
+            } else if (badString[s] == '}') {
+                json += "\"}"
+            }
+            else {
+                json += badString[s]
+            }
+        }
+        return json
+    }
 
 
-    private fun populateTeaHome() {
+
+    private fun populateTeaHome (){
+        val tea0 = Tea(
+            0,
+            R.drawable.tea,
+            "Габа",
+            "249 Р",
+            "Описание Описание описание Описание Описание описание Описание Описание описаниеОписание Описание описание"
+        )
+        teasHome.add(tea0)
         val tea1 = Tea(
             1,
             R.drawable.tea,
@@ -204,7 +258,7 @@ class TeasService {
         teasHome.add(tea7)
 
         val tea8 = Tea(
-            9,
+            8,
             R.drawable.tea,
             "Тегуанинь",
             "549 Р",
@@ -214,6 +268,8 @@ class TeasService {
     }
 
     private fun populateTeaCart() {
+
+
         val tea1 = Tea(
             1,
             R.drawable.tea,

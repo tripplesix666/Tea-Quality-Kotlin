@@ -1,6 +1,8 @@
 package com.example.teaqualitykotlin.ui.favorite
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -49,29 +51,22 @@ class FragmentFavoriteViewModel(
 
     fun populateDb() {
         initFirebase()
+        teasService.retrieveDB()
         for (tea in teasService.teasHome) {
-            val id = tea.id
-            var photoUrl = "default"
-            val path = REF_STORAGE_ROOT.child(FOLDER_IMAGES).child("1").child("1.png")
-            path.downloadUrl.addOnCompleteListener {
-                if (it.isSuccessful) {
-                    photoUrl = it.result.toString()
-                }
-            }.addOnFailureListener {
-                photoUrl = it.toString()
-            }
-//            REF_STORAGE_ROOT.child("/teasImage/1.png").downloadUrl.addOnSuccessListener {
-//                photoUrl = it.toString()
-//            }
+
+            val id = tea.id.toString()
+
             val dateMap = mutableMapOf<String, Any>()
-//            dateMap[CHILD_ID] = tea.id
-            dateMap[CHILD_IMAGE] = photoUrl
+            dateMap[CHILD_ID] = tea.id
             dateMap[CHILD_NAME] = tea.productName
             dateMap[CHILD_PRICE] = tea.productPrice
             dateMap[CHILD_DETAILS] = tea.details
 
-            REF_DATABASE_ROOT.child(NODE_TEAS).child(id.toString()).updateChildren(dateMap)
-        }
+            REF_DATABASE_ROOT.child(NODE_TEAS).child(id).updateChildren(dateMap)
 
+            REF_STORAGE_ROOT.child("teasImage/1/1.png").downloadUrl.addOnSuccessListener {
+                REF_DATABASE_ROOT.child(NODE_TEAS).child(id).child(CHILD_IMAGE).setValue(it.toString())
+            }
+        }
     }
 }
