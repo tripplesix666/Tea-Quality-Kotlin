@@ -1,19 +1,17 @@
 package com.example.teaqualitykotlin
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isGone
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.teaqualitykotlin.databinding.ActivityMainBinding
 import com.example.teaqualitykotlin.ui.favorite.FragmentFavorite
 import com.example.teaqualitykotlin.ui.productPage.ProductPageActivity
-import com.example.teaqualitykotlin.ui.productPage.TeaProductPageFragment
+import com.google.firebase.FirebaseApp
 import java.io.Serializable
 
 class MainActivity : AppCompatActivity(), Navigator {
@@ -22,6 +20,7 @@ class MainActivity : AppCompatActivity(), Navigator {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(ContentValues.TAG, "onCreate:  main")
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -36,10 +35,6 @@ class MainActivity : AppCompatActivity(), Navigator {
         val intent = Intent(this, ProductPageActivity::class.java)
         intent.putExtra("EXTRA", tea as Serializable)
         startActivity(intent)
-//        supportFragmentManager.beginTransaction()
-//            .addToBackStack(null)
-//            .replace(R.id.nav_host_fragment_activity_main, TeaProductPageFragment.newInstance(tea.id))
-//            .commit()
     }
 
     override fun goBack() {

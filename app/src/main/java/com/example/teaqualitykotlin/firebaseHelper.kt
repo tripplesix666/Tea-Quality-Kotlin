@@ -1,5 +1,6 @@
 package com.example.teaqualitykotlin
 
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -13,6 +14,11 @@ lateinit var REF_DATABASE_ROOT: DatabaseReference
 lateinit var REF_STORAGE_ROOT: StorageReference
 
 const val NODE_TEAS = "teas"
+const val NODE_CART = "Cart"
+const val NODE_FAVORITE = "Favorite"
+const val NODE_USERS = "Users"
+
+
 
 const val FOLDER_IMAGES = "teasImage"
 

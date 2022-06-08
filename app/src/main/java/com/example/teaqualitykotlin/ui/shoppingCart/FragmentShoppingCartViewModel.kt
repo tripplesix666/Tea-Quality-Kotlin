@@ -20,6 +20,7 @@ class FragmentShoppingCartViewModel(
 
     init {
         loadTeas()
+        teasService.retrieveDbTeasCart()
     }
 
     override fun onCleared() {

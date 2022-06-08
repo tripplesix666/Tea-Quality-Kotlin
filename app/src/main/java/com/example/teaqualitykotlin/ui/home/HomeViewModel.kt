@@ -1,5 +1,7 @@
 package com.example.teaqualitykotlin.ui.home
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,7 +21,10 @@ class HomeViewModel(
     }
 
     init {
+        Log.d(TAG, "onCreate: view model")
+
         loadTeas()
+        teasService.retrieveDbTeasHome()
     }
 
     override fun onCleared() {
@@ -34,5 +39,7 @@ class HomeViewModel(
     fun moveTea(tea: Tea) {
         teasService.moveTeaToFavorite(tea)
     }
+
+
 
 }

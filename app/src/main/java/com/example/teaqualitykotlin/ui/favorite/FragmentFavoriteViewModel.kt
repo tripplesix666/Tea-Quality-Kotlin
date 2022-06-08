@@ -19,6 +19,8 @@ class FragmentFavoriteViewModel(
 
     init {
         loadTeas()
+        teasService.retrieveDbTeasFavorite()
+
     }
 
     override fun onCleared() {
@@ -34,6 +36,8 @@ class FragmentFavoriteViewModel(
         teasService.deleteTeaFavorite(tea)
     }
 
+
+
     val count: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
@@ -46,23 +50,23 @@ class FragmentFavoriteViewModel(
     }
 
     fun populateDb() {
-        initFirebase()
-        teasService.retrieveDB()
-        for (tea in teasService.teasHome) {
-
-            val id = tea.id.toString()
-
-            val dateMap = mutableMapOf<String, Any>()
-            dateMap[CHILD_ID] = tea.id
-            dateMap[CHILD_NAME] = tea.name
-            dateMap[CHILD_PRICE] = tea.price
-            dateMap[CHILD_DETAILS] = tea.details
-
-            REF_DATABASE_ROOT.child(NODE_TEAS).child(id).updateChildren(dateMap)
-
-            REF_STORAGE_ROOT.child("teasImage/1/1.png").downloadUrl.addOnSuccessListener {
-                REF_DATABASE_ROOT.child(NODE_TEAS).child(id).child(CHILD_IMAGE).setValue(it.toString())
-            }
-        }
+//        initFirebase()
+//        teasService.retrieveDB()
+//        for (tea in teasService.teasHome) {
+//
+//            val id = tea.id.toString()
+//
+//            val dateMap = mutableMapOf<String, Any>()
+//            dateMap[CHILD_ID] = tea.id
+//            dateMap[CHILD_NAME] = tea.name
+//            dateMap[CHILD_PRICE] = tea.price
+//            dateMap[CHILD_DETAILS] = tea.details
+//
+//            REF_DATABASE_ROOT.child(NODE_TEAS).child(id).updateChildren(dateMap)
+//
+//            REF_STORAGE_ROOT.child("teasImage/1/1.png").downloadUrl.addOnSuccessListener {
+//                REF_DATABASE_ROOT.child(NODE_TEAS).child(id).child(CHILD_IMAGE).setValue(it.toString())
+//            }
+//        }
     }
 }

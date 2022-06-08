@@ -39,12 +39,6 @@ class AdapterHomeTeas(
         }
     }
 
-//    private fun checkBoolean(view: View) {
-//        val tea = view.tag as Tea
-//        val isChecked = false
-//        Toast.makeText(view.context, "add to favorite", Toast.LENGTH_SHORT).show()
-//    }
-
     //Возвращает кол-во элементов в списке
     override fun getItemCount(): Int = teas.size
 

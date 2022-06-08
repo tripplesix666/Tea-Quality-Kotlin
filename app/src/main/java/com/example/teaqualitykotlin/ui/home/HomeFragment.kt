@@ -1,8 +1,10 @@
 package com.example.teaqualitykotlin.ui.home
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +12,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -53,9 +54,11 @@ class HomeFragment : Fragment() {
                 Toast.makeText(context, "Добавлено в избранное", Toast.LENGTH_SHORT).show()
             }
         })
+        Log.d(TAG, "onCreateView: ")
 
         viewModel.teas.observe(viewLifecycleOwner, Observer { adapterHomeTeas.teas = it })
 //        viewModel.teas.observe(viewLifecycleOwner, Observer { adapter.teas = it })
+
 
         val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 //        val layoutManager = GridLayoutManager(requireContext(), 2)

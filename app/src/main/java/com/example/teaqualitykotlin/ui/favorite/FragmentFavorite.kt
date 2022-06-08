@@ -25,7 +25,7 @@ class FragmentFavorite : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         adapter = AdapterHomeTeas(object : TeaActionListener {
             override fun onTeaDetails(tea: Tea) {
@@ -41,29 +41,25 @@ class FragmentFavorite : Fragment() {
 
         viewModel.teas.observe(viewLifecycleOwner, Observer { adapter.teas = it })
 
-//        val layoutManager = LinearLayoutManager(requireContext())
+
         val layoutManager = GridLayoutManager(requireContext(), 2)
         binding.recyclerViewFavorite.layoutManager = layoutManager
         binding.recyclerViewFavorite.adapter = adapter
 
-
-
         binding.countTextView.text = adapter.itemCount.toString()
 
-//        viewModel.count.observe(viewLifecycleOwner) {
-//            viewModel.count.value = adapter.itemCount.toString()
-//            binding.countTextView.text = viewModel.count(adapter)
-//        }
         binding.favoriteTextView.setOnClickListener {
-//            viewModel.populateDb()
+            viewModel.populateDb()
         }
-
 
 
         binding.countTextView.setOnClickListener {
             Toast.makeText(context, "${adapter.itemCount}", Toast.LENGTH_SHORT).show()
+            binding.countTextView.text = adapter.itemCount.toString()
         }
 
         return binding.root
     }
+
+
 }
