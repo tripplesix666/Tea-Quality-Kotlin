@@ -9,18 +9,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.teaqualitykotlin.*
-import com.example.teaqualitykotlin.adapters.AdapterHomeTeas
+import com.example.teaqualitykotlin.adapters.AdapterMainTeas
 import com.example.teaqualitykotlin.adapters.TeaActionListener
 import com.example.teaqualitykotlin.databinding.FragmentSearchBinding
-import java.util.*
 
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
-    private lateinit var adapter: AdapterHomeTeas
+    private lateinit var adapter: AdapterMainTeas
 
     private val viewModel: SearchViewModel by viewModels { factory() }
 
@@ -30,7 +28,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
-        adapter = AdapterHomeTeas(object : TeaActionListener {
+        adapter = AdapterMainTeas(object : TeaActionListener {
             override fun onTeaDetails(tea: Tea) {
                 navigator().showProductPage(tea)
             }

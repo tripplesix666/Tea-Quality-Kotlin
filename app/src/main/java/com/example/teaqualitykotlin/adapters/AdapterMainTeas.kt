@@ -17,9 +17,9 @@ interface TeaActionListener {
 }
 
 
-class AdapterHomeTeas(
+class AdapterMainTeas(
     private val actionListener: TeaActionListener
-) : RecyclerView.Adapter<AdapterHomeTeas.HomeTeasViewHolder>(), View.OnClickListener {
+) : RecyclerView.Adapter<AdapterMainTeas.HomeTeasViewHolder>(), View.OnClickListener {
 
     var teas:List<Tea> = emptyList()
         set(newValue){

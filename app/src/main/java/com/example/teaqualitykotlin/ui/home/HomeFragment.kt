@@ -18,7 +18,7 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.teaqualitykotlin.*
-import com.example.teaqualitykotlin.adapters.AdapterHomeTeas
+import com.example.teaqualitykotlin.adapters.AdapterMainTeas
 import com.example.teaqualitykotlin.adapters.TeaActionListener
 import com.example.teaqualitykotlin.adapters.viewPager2Adapter
 import com.example.teaqualitykotlin.databinding.FragmentHomeBinding
@@ -28,8 +28,8 @@ import kotlin.math.abs
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var adapterHomeTeas: AdapterHomeTeas
-    private lateinit var adapter: AdapterHomeTeas
+    private lateinit var adapterMainTeas: AdapterMainTeas
+    private lateinit var adapter: AdapterMainTeas
 
     private lateinit var imageList: ArrayList<Int>
     private lateinit var handler : Handler
@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        adapterHomeTeas = AdapterHomeTeas(object : TeaActionListener {
+        adapterMainTeas = AdapterMainTeas(object : TeaActionListener {
             override fun onTeaDetails(tea: Tea) {
                 navigator().showProductPage(tea)
             }
@@ -56,14 +56,14 @@ class HomeFragment : Fragment() {
         })
         Log.d(TAG, "onCreateView: ")
 
-        viewModel.teas.observe(viewLifecycleOwner, Observer { adapterHomeTeas.teas = it })
+        viewModel.teas.observe(viewLifecycleOwner, Observer { adapterMainTeas.teas = it })
 //        viewModel.teas.observe(viewLifecycleOwner, Observer { adapter.teas = it })
 
 
         val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
 //        val layoutManager = GridLayoutManager(requireContext(), 2)
         binding.recyclerViewPopular.layoutManager = layoutManager
-        binding.recyclerViewPopular.adapter = adapterHomeTeas
+        binding.recyclerViewPopular.adapter = adapterMainTeas
 
 
 
@@ -72,7 +72,7 @@ class HomeFragment : Fragment() {
             RecyclerView.HORIZONTAL,
             true
         )
-        binding.recyclerViewNovelty.adapter = adapterHomeTeas
+        binding.recyclerViewNovelty.adapter = adapterMainTeas
 
 
 

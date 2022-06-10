@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Programming/AS/Tea-Quality-Kotlin/app/src/main/res/layout/activity_product_page.xml" value="0.25" />
+        <entry key="..\:/Programming/AS/Tea-Quality-Kotlin/app/src/main/res/layout/activity_splash_screen.xml" value="0.264" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2985" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/drawable/ic_arrow_back.xml" value="0.2135" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2985" />

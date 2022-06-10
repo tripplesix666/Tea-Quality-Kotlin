@@ -6,11 +6,12 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.teaqualitykotlin.R
 import com.example.teaqualitykotlin.databinding.ActivitySignUpBinding
+import com.example.teaqualitykotlin.firebaseAuth
+import com.example.teaqualitykotlin.initFirebase
 import com.google.firebase.auth.FirebaseAuth
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
-    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +19,7 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        firebaseAuth = FirebaseAuth.getInstance()
+        initFirebase()
 
         binding.textView.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
@@ -37,6 +38,7 @@ class SignUpActivity : AppCompatActivity() {
                         if (it.isSuccessful) {
                             val intent = Intent(this, SignInActivity::class.java)
                             startActivity(intent)
+                            finish()
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
 

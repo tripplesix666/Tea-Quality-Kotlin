@@ -139,7 +139,7 @@ class TeasService {
     }
 
     fun retrieveDbTeasCart() {
-        initFirebase()
+        initFirebase()  
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.teaqualitykotlin.databinding.ActivityMainBinding
+import com.example.teaqualitykotlin.ui.authorization.SignInActivity
 import com.example.teaqualitykotlin.ui.favorite.FragmentFavorite
 import com.example.teaqualitykotlin.ui.productPage.ProductPageActivity
 import com.google.firebase.FirebaseApp
@@ -29,6 +30,14 @@ class MainActivity : AppCompatActivity(), Navigator {
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(firebaseAuth.currentUser == null){
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun showProductPage(tea: Tea) {

@@ -14,11 +14,3 @@ data class TeaDetails(
     val tea: Tea,
     val details: String,
 )
-
-data class TeaTest (
-    val id: Long,
-    val image: String,
-    val name: String,
-    val price: String,
-    val details: String,
-) : Serializable

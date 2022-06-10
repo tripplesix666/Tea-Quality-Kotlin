@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.teaqualitykotlin.*
-import com.example.teaqualitykotlin.adapters.AdapterHomeTeas
+import com.example.teaqualitykotlin.adapters.AdapterMainTeas
 
 class FragmentFavoriteViewModel(
     private val teasService: TeasService
@@ -42,7 +42,7 @@ class FragmentFavoriteViewModel(
         MutableLiveData<String>()
     }
 
-    fun count(adapter: AdapterHomeTeas): String {
+    fun count(adapter: AdapterMainTeas): String {
 
         count.value = adapter.itemCount.toString()
         return count.value.toString()

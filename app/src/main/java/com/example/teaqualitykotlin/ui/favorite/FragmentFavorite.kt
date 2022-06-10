@@ -10,14 +10,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.teaqualitykotlin.*
-import com.example.teaqualitykotlin.adapters.AdapterHomeTeas
+import com.example.teaqualitykotlin.adapters.AdapterMainTeas
 import com.example.teaqualitykotlin.adapters.TeaActionListener
 import com.example.teaqualitykotlin.databinding.FragmentFavoriteBinding
 
 class FragmentFavorite : Fragment() {
 
     private lateinit var binding: FragmentFavoriteBinding
-    private lateinit var adapter: AdapterHomeTeas
+    private lateinit var adapter: AdapterMainTeas
 
     private val viewModel: FragmentFavoriteViewModel by viewModels { factory() }
 
@@ -27,7 +27,7 @@ class FragmentFavorite : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        adapter = AdapterHomeTeas(object : TeaActionListener {
+        adapter = AdapterMainTeas(object : TeaActionListener {
             override fun onTeaDetails(tea: Tea) {
                 navigator().showProductPage(tea)
             }
