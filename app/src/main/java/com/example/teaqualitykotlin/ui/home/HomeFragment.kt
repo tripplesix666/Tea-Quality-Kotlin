@@ -1,10 +1,8 @@
 package com.example.teaqualitykotlin.ui.home
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,20 +15,20 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.example.teaqualitykotlin.*
+import com.example.teaqualitykotlin.R
+import com.example.teaqualitykotlin.Tea
 import com.example.teaqualitykotlin.adapters.AdapterMainTeas
 import com.example.teaqualitykotlin.adapters.TeaActionListener
 import com.example.teaqualitykotlin.adapters.viewPager2Adapter
 import com.example.teaqualitykotlin.databinding.FragmentHomeBinding
-import java.util.ArrayList
+import com.example.teaqualitykotlin.factory
+import com.example.teaqualitykotlin.navigator
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var adapterMainTeas: AdapterMainTeas
-    private lateinit var adapter: AdapterMainTeas
-
     private lateinit var imageList: ArrayList<Int>
     private lateinit var handler : Handler
     private lateinit var adapterViewPager: viewPager2Adapter
@@ -49,19 +47,15 @@ class HomeFragment : Fragment() {
             }
 
             override fun onMoreAction(tea: Tea) {
-//                viewModel.deleteTea(tea)
                 viewModel.moveTea(tea)
                 Toast.makeText(context, "Добавлено в избранное", Toast.LENGTH_SHORT).show()
             }
         })
-        Log.d(TAG, "onCreateView: ")
 
         viewModel.teas.observe(viewLifecycleOwner, Observer { adapterMainTeas.teas = it })
-//        viewModel.teas.observe(viewLifecycleOwner, Observer { adapter.teas = it })
 
 
         val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-//        val layoutManager = GridLayoutManager(requireContext(), 2)
         binding.recyclerViewPopular.layoutManager = layoutManager
         binding.recyclerViewPopular.adapter = adapterMainTeas
 

@@ -7,6 +7,16 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_arrow_back"
+        android:layout_margin="10dp"
+        android:translationZ="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/teaImageView"
         android:layout_width="365dp"
         android:layout_height="wrap_content"

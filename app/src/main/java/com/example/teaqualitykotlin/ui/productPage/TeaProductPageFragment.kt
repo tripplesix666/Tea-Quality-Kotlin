@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import com.example.teaqualitykotlin.R
 import com.example.teaqualitykotlin.databinding.FragmentProductPageBinding
 import com.example.teaqualitykotlin.factory
+import com.example.teaqualitykotlin.navigator
 
 class TeaProductPageFragment : Fragment() {
 
@@ -36,6 +37,10 @@ class TeaProductPageFragment : Fragment() {
             binding.productDescription.text = it.details
             binding.teaPriceTextView.text = it.tea.price
         })
+
+        binding.backButton.setOnClickListener {
+            activity?.finish()
+        }
 
         binding.addToCartButton.setOnClickListener {
             viewModel.moveTeaToCart()

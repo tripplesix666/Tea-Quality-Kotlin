@@ -14,8 +14,17 @@
     <string name="cart_orderSum">Сумма заказа</string>
     <string name="btn_cart_placeYourOrder">Оформить заказ</string>
     <string name="popular">Популярное</string>
-    <string name="Favorite">Избранное</string>
+    <string name="Favorite">Избранное/</string>
     <string name="add_to_cart">Добавить в корзину</string>
     <string name="news">Новости</string>
     <string name="account">Аккаунт</string>
+    <string name="type_your_email">Введите ваш Email</string>
+    <string name="type_your_password">Введите ваш пароль</string>
+    <string name="retype_your_password">Повоторите ваш пароль</string>
+    <string name="already_registered_sign_in">Уже зарагестрированны, Войдите!</string>
+    <string name="not_registered_yet_sign_up">Ещё не зарегестрированны, Заригестрируйтесь!</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="welcome_sign_up">Добро пожаловать, \nЗарегистрируйтесь чтобы продолжить</string>
+    <string name="welcome_sign_in">Добро пожаловать, \nВойдите чтобы продолжить</string>
+    <string name="app_icon">appIcon</string>
 </resources>

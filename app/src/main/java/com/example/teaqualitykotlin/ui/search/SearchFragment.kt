@@ -26,7 +26,7 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
         adapter = AdapterMainTeas(object : TeaActionListener {
             override fun onTeaDetails(tea: Tea) {
@@ -44,20 +44,14 @@ class SearchFragment : Fragment() {
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(newText: String?): Boolean {
                 binding.searchView.clearFocus()
-
                 Toast.makeText(context, "$newText", Toast.LENGTH_SHORT).show()
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-
                 viewModel.searchTea(newText!!)
-//                binding.recyclerView.adapter!!.notifyDataSetChanged()
-
-
                 return true
             }
-
         })
 
         viewModel.teas.observe(viewLifecycleOwner, Observer { adapter.teas = it })

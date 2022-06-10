@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="wrap_content"
+        android:layout_width="166dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
         android:background="@color/black"
@@ -26,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:translationZ="1dp"
+                android:padding="2dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:src="@drawable/ic_nav_favorite"
                 app:layout_constraintEnd_toEndOf="parent"

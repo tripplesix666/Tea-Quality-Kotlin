@@ -1,14 +1,12 @@
 package com.example.teaqualitykotlin.ui.authorization
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.teaqualitykotlin.MainActivity
-import com.example.teaqualitykotlin.R
 import com.example.teaqualitykotlin.databinding.ActivitySignInBinding
 import com.example.teaqualitykotlin.firebaseAuth
-import com.example.teaqualitykotlin.initFirebase
 import com.google.firebase.auth.FirebaseAuth
 
 class SignInActivity : AppCompatActivity() {
@@ -19,7 +17,6 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initFirebase()
         firebaseAuth = FirebaseAuth.getInstance()
         binding.textView.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
@@ -44,15 +41,9 @@ class SignInActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Пустые поля не заполнены!!!", Toast.LENGTH_SHORT).show()
 
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-
     }
 }

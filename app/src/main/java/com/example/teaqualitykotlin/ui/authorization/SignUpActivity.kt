@@ -1,14 +1,11 @@
 package com.example.teaqualitykotlin.ui.authorization
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.teaqualitykotlin.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.teaqualitykotlin.databinding.ActivitySignUpBinding
 import com.example.teaqualitykotlin.firebaseAuth
-import com.example.teaqualitykotlin.initFirebase
-import com.google.firebase.auth.FirebaseAuth
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
@@ -18,8 +15,6 @@ class SignUpActivity : AppCompatActivity() {
 
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        initFirebase()
 
         binding.textView.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
@@ -41,15 +36,13 @@ class SignUpActivity : AppCompatActivity() {
                             finish()
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
-
                         }
                     }
                 } else {
-                    Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Пароли не совпадают", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(this, "Пустые поля не заполнены!!!", Toast.LENGTH_SHORT).show()
             }
         }
     }

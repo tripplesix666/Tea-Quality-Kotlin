@@ -11,21 +11,23 @@
     <TextView
         android:id="@+id/favoriteTextView"
         style="@style/mainTextView"
+        android:layout_marginStart="16dp"
         android:text="@string/Favorite"
-        app:layout_constraintEnd_toStartOf="@+id/countTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/countTextView"
         style="@style/mainTextView"
-        android:text="22 шт"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/favoriteTextView" />
+        android:text="22"
+        app:layout_constraintStart_toEndOf="@+id/favoriteTextView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewFavorite"
+        android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

@@ -46,7 +46,7 @@ class FragmentFavorite : Fragment() {
         binding.recyclerViewFavorite.layoutManager = layoutManager
         binding.recyclerViewFavorite.adapter = adapter
 
-        binding.countTextView.text = adapter.itemCount.toString()
+        binding.countTextView.text = "${adapter.itemCount}шт"
 
         binding.favoriteTextView.setOnClickListener {
             viewModel.populateDb()
@@ -54,8 +54,8 @@ class FragmentFavorite : Fragment() {
 
 
         binding.countTextView.setOnClickListener {
-            Toast.makeText(context, "${adapter.itemCount}", Toast.LENGTH_SHORT).show()
-            binding.countTextView.text = adapter.itemCount.toString()
+            Toast.makeText(context, "${adapter.itemCount}шт", Toast.LENGTH_SHORT).show()
+            binding.countTextView.text = "${adapter.itemCount}шт"
         }
 
         return binding.root

@@ -16,7 +16,6 @@ interface TeaActionListener {
     fun onMoreAction(tea: Tea)
 }
 
-
 class AdapterMainTeas(
     private val actionListener: TeaActionListener
 ) : RecyclerView.Adapter<AdapterMainTeas.HomeTeasViewHolder>(), View.OnClickListener {
@@ -53,6 +52,7 @@ class AdapterMainTeas(
         return HomeTeasViewHolder(binding)
     }
 
+    //Отрисовавает элемент
     override fun onBindViewHolder(holderHome: HomeTeasViewHolder, position: Int) {
         val tea = teas[position]
         with(holderHome.binding) {
@@ -63,7 +63,6 @@ class AdapterMainTeas(
             Picasso.get()
                 .load(tea.image)
                 .into(teaImageView)
-//            teaImageView.setImageResource(R.drawable.tea)
         }
     }
 
