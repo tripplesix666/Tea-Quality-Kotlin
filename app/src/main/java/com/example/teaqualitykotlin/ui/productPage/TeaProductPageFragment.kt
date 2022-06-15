@@ -13,6 +13,7 @@ import com.example.teaqualitykotlin.R
 import com.example.teaqualitykotlin.databinding.FragmentProductPageBinding
 import com.example.teaqualitykotlin.factory
 import com.example.teaqualitykotlin.navigator
+import com.squareup.picasso.Picasso
 
 class TeaProductPageFragment : Fragment() {
 
@@ -28,14 +29,16 @@ class TeaProductPageFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentProductPageBinding.inflate(inflater, container, false)
 
         viewModel.teaDetails.observe(viewLifecycleOwner, Observer {
             binding.teaNameTextView.text = it.tea.name
-            binding.teaImageView.setImageResource(R.drawable.tea)
+            Picasso.get()
+                .load(it.tea.image)
+                .into(binding.teaImageView)
             binding.productDescription.text = it.details
-            binding.teaPriceTextView.text = it.tea.price
+            binding.teaPriceTextView.text = it.tea.price.toString()
         })
 
         binding.backButton.setOnClickListener {

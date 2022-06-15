@@ -6,7 +6,7 @@ data class Tea (
     val id: Long,
     val image: String,
     val name: String,
-    val price: String,
+    val price: Int,
     val details: String,
 ) : Serializable
 

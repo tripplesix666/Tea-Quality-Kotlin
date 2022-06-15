@@ -15,22 +15,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
+
+
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:orientation="vertical"
             android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <ImageView
-                android:id="@+id/favoriteImageViewButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:translationZ="1dp"
-                android:padding="2dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:src="@drawable/ic_nav_favorite"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/favoriteImageViewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:translationZ="2dp"
+            android:padding="2dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_full_red_heart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
             <ImageView
@@ -76,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/montserrat_medium"
-                    android:text="/ 50 г"
+                    android:text="/ 25 г"
                     android:textSize="15sp" />
 
 

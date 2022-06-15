@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.teaqualitykotlin.*
 import com.example.teaqualitykotlin.databinding.ActivitySignUpBinding
-import com.example.teaqualitykotlin.firebaseAuth
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
@@ -31,7 +31,14 @@ class SignUpActivity : AppCompatActivity() {
 
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
-                            val intent = Intent(this, SignInActivity::class.java)
+                            initFirebase()
+                            REF_DATABASE_ROOT.child(NODE_USERS).child(firebaseAuth.uid.toString()).child(
+                                NODE_SALE).child(CHILD_PERCENT).setValue(1)
+
+                            REF_DATABASE_ROOT.child(NODE_USERS).child(firebaseAuth.uid.toString()).child(
+                                NODE_SALE).child(CHILD_SUM).setValue(0)
+
+                            val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
                             finish()
                         } else {

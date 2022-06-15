@@ -11,6 +11,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:cardCornerRadius="20dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
@@ -26,11 +27,13 @@
 <!--Название товара-->
     <TextView
         android:id="@+id/teaNameTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/image_to_text"
+        android:ellipsize="end"
         android:textColor="@color/black"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/closeImageViewButton"
         app:layout_constraintStart_toEndOf="@id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView"
         tools:text="Женьшеневый Улун" />
@@ -54,7 +57,19 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintStart_toEndOf="@id/cardView"
-        tools:text="249 ₽" />
+        tools:text="249" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₽"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/teaPriceTextView"
+        app:layout_constraintBottom_toBottomOf="@id/teaPriceTextView"
+        app:layout_constraintTop_toTopOf="@id/teaPriceTextView"/>
 
 
     <ImageView
@@ -65,29 +80,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/plusImageViewButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_plus"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/plusImageViewButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/ic_plus"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/cardView"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
-    <TextView
-        android:id="@+id/countTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="01"
-        app:layout_constraintBottom_toBottomOf="@+id/minusImageViewButton"
-        app:layout_constraintEnd_toStartOf="@+id/plusImageViewButton"
-        app:layout_constraintTop_toTopOf="@+id/minusImageViewButton" />
+<!--    <TextView-->
+<!--        android:id="@+id/countTextView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="01"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/minusImageViewButton"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/plusImageViewButton"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/minusImageViewButton" />-->
 
-    <ImageView
-        android:id="@+id/minusImageViewButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_minus"
-        app:layout_constraintBottom_toBottomOf="@+id/plusImageViewButton"
-        app:layout_constraintEnd_toStartOf="@+id/countTextView" />
+<!--    <ImageView-->
+<!--        android:id="@+id/minusImageViewButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/ic_minus"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/plusImageViewButton"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/countTextView" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

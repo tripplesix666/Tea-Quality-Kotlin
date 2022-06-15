@@ -13,6 +13,7 @@
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/drawable/ic_nav_home.xml" value="0.267" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/drawable/ic_nav_shopping.xml" value="0.2135" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2985" />
+        <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/drawable/ic_red_heart.xml" value="0.275" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/drawable/page_shape.xml" value="0.2135" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/drawable/round_style.xml" value="0.2135" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/drawable/search_view_bg.xml" value="0.2385" />
@@ -31,7 +32,7 @@
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/layout/fragment_notifications.xml" value="0.36666666666666664" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/layout/fragment_product_page.xml" value="0.36666666666666664" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/layout/fragment_search.xml" value="0.36666666666666664" />
-        <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/layout/fragment_shopping_cart.xml" value="0.36666666666666664" />
+        <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/layout/fragment_shopping_cart.xml" value="0.75" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/layout/item_tea_cart.xml" value="0.36666666666666664" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/layout/item_tea_favorite.xml" value="0.36666666666666664" />
         <entry key="..\:/Save/AS/TeaQualityKotlin/app/src/main/res/layout/item_tea_home.xml" value="0.5" />

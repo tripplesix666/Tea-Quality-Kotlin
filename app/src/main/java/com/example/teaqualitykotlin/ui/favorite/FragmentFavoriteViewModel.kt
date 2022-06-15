@@ -36,8 +36,6 @@ class FragmentFavoriteViewModel(
         teasService.deleteTeaFavorite(tea)
     }
 
-
-
     val count: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
@@ -51,7 +49,6 @@ class FragmentFavoriteViewModel(
 
     fun populateDb() {
 //        initFirebase()
-//        teasService.retrieveDB()
 //        for (tea in teasService.teasHome) {
 //
 //            val id = tea.id.toString()

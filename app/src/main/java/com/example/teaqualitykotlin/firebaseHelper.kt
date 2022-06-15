@@ -1,13 +1,10 @@
 package com.example.teaqualitykotlin
 
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.storage
 
 lateinit var firebaseAuth: FirebaseAuth
 lateinit var REF_DATABASE_ROOT: DatabaseReference
@@ -17,10 +14,10 @@ const val NODE_TEAS = "teas"
 const val NODE_CART = "Cart"
 const val NODE_FAVORITE = "Favorite"
 const val NODE_USERS = "Users"
+const val NODE_SALE = "Sale"
 
-
-
-const val FOLDER_IMAGES = "teasImage"
+const val CHILD_PERCENT = "percent"
+const val CHILD_SUM = "sum"
 
 const val CHILD_ID = "id"
 const val CHILD_IMAGE = "image"

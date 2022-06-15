@@ -32,12 +32,12 @@ class AdapterCartTeas(
     override fun onClick(v: View) {
         val tea = v.tag as Tea
         when (v.id) {
-            R.id.plusImageViewButton -> {
-                actionListener.onTeaCountPlus(tea)
-            }
-            R.id.minusImageViewButton -> {
-                actionListener.onTeaCountMinus(tea)
-            }
+//            R.id.plusImageViewButton -> {
+//                actionListener.onTeaCountPlus(tea)
+//            }
+//            R.id.minusImageViewButton -> {
+//                actionListener.onTeaCountMinus(tea)
+//            }
             R.id.closeImageViewButton -> {
                 actionListener.onTeaDelete(tea)
             }
@@ -54,8 +54,8 @@ class AdapterCartTeas(
 
         binding.root.setOnClickListener(this)
         binding.closeImageViewButton.setOnClickListener(this)
-        binding.minusImageViewButton.setOnClickListener(this)
-        binding.plusImageViewButton.setOnClickListener(this)
+//        binding.minusImageViewButton.setOnClickListener(this)
+//        binding.plusImageViewButton.setOnClickListener(this)
 
         return CartTeasViewHolder(binding)
     }
@@ -65,10 +65,10 @@ class AdapterCartTeas(
         with(holderHome.binding) {
             holderHome.itemView.tag = tea
             closeImageViewButton.tag = tea
-            plusImageViewButton.tag = tea
-            minusImageViewButton.tag = tea
+//            plusImageViewButton.tag = tea
+//            minusImageViewButton.tag = tea
             teaNameTextView.text = tea.name
-            teaPriceTextView.text = tea.price
+            teaPriceTextView.text = tea.price.toString()
             Picasso.get()
                 .load(tea.image)
                 .into(teaImageView)

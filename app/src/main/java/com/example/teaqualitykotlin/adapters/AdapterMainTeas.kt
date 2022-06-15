@@ -59,7 +59,7 @@ class AdapterMainTeas(
             holderHome.itemView.tag = tea
             favoriteImageViewButton.tag = tea
             teaNameTextView.text = tea.name
-            teaPriceTextView.text = tea.price
+            teaPriceTextView.text = tea.price.toString()
             Picasso.get()
                 .load(tea.image)
                 .into(teaImageView)

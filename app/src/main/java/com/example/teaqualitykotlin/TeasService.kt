@@ -15,7 +15,7 @@ class TeasService {
     var teasHome = mutableListOf<Tea>()
 
     private var teasFavorite = mutableListOf<Tea>()
-    private var teasCart = mutableListOf<Tea>()
+    var teasCart = mutableListOf<Tea>()
     private var teasSearch = mutableListOf<Tea>()
 
     private val listenersHome = mutableSetOf<TeasListener>()
@@ -124,7 +124,6 @@ class TeasService {
             REF_DATABASE_ROOT.child(NODE_USERS).child("${firebaseAuth.uid}")
                 .child(NODE_CART).child("${it.childrenCount}").updateChildren(dataMap)
         }
-
         teasCart.add(teaToAdd)
     }
 
@@ -136,22 +135,18 @@ class TeasService {
 
         REF_DATABASE_ROOT.child(NODE_USERS).child("${firebaseAuth.uid}")
             .child(NODE_CART).get().addOnSuccessListener { it ->
-                var jsonString = it.value.toString().replace(" ","")
-                Log.d(TAG, "retrieveDB: $jsonString")
+                var jsonString = it.value.toString()
                 jsonString = stringToJson(jsonString)
-                Log.d(TAG, "retrieveDB: $jsonString")
                 val type = Types.newParameterizedType(MutableList::class.java, Tea::class.java)
                 val teaListAdapter = moshi.adapter<MutableList<Tea>>(type)
                 val newTeaList = teaListAdapter.fromJson(jsonString)
 
                 if (newTeaList != null) {
-                    for (t in newTeaList!!) {
+                    for (t in newTeaList) {
                         teasCart.add(t)
                     }
-                    Log.d(TAG, "retrieveDB teasFavorite: $teasCart")
                     listenersCart.forEach { it.invoke(teasCart)}
                 }
-
             }
     }
 
@@ -235,7 +230,7 @@ class TeasService {
 
         REF_DATABASE_ROOT.child(NODE_USERS).child("${firebaseAuth.uid}")
             .child(NODE_FAVORITE).get().addOnSuccessListener { it ->
-            var jsonString = it.value.toString().replace(" ","")
+            var jsonString = it.value.toString()
                 Log.d(TAG, "retrieveDB: $jsonString")
             jsonString = stringToJson(jsonString)
                 Log.d(TAG, "retrieveDB: $jsonString")
@@ -257,12 +252,14 @@ class TeasService {
 
     //Заполнение листов
     fun retrieveDbTeasHome() {
+        val testStr = "[{ \"id\": \"0\", \"image\": \"https://firebasestorage.googleapis.com/v0/b/tea-quality-kotlin.appspot.com/o/teasImage%2F2.png?alt=media&token=f6f3a4b7-6237-49a2-8f83-b0650a235dcd\", \"name\": \"Красный чай Гуанси Хун Ча\", \"price\": \"249 Р\", \"details\": \"Красный, чай из Гуанси из местности Чжао Пин. Название переводится как черные палочки. Чай невысокого грэйда но достаточно крепкий напоминает индийский чай. Собственно этим красный чай из Гуанси отличен от классических видов китайского чая.\" }]"
+
         initFirebase()
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
         REF_DATABASE_ROOT.child(NODE_TEAS).get().addOnSuccessListener { it ->
-            var jsonString = it.value.toString().replace(" ","")
+            var jsonString = it.value.toString()
             jsonString = stringToJson(jsonString)
             val type = Types.newParameterizedType(MutableList::class.java, Tea::class.java)
             val teaListAdapter = moshi.adapter<MutableList<Tea>>(type)
@@ -278,26 +275,33 @@ class TeasService {
     }
 
     private fun stringToJson(badString: String): String {
-        var json = ""
-
+        var jsonOld = ""
+        var jsonNew = ""
         for (s in badString.toCharArray().indices) {
             if (badString[s] == '}' && badString[s + 1] == '{') {
-                json += ""
+                jsonOld += ""
             }
             else if (badString[s] == '{') {
-                json += "{\""
+                jsonOld += "{\""
             } else if (badString[s] == '=' && badString[s - 1] != 't' && badString[s - 1] != 'n') {
-                json += "\":\""
-            } else if (badString[s] == ',' && badString[s - 1] != '}') {
-                json += "\",\""
+                jsonOld += "\":\""
+            } else if (badString[s] == ',' && badString[s - 1] != '}' && (badString[s + 2] == 'i' || badString[s + 2] == 'p' || badString[s + 2] == 'n' || badString[s + 2] == 'd')) {
+                jsonOld += "\",\""
             } else if (badString[s] == '}') {
-                json += "\"}"
+                jsonOld += "\"}"
             }
             else {
-                json += badString[s]
+                jsonOld += badString[s]
             }
         }
-        return json
+        for (s in jsonOld.toCharArray().indices) {
+            if (jsonOld[s] == ' ' && jsonOld[s - 1] == '"' && (jsonOld[s + 1] == 'p' || jsonOld[s + 1] == 'n' || jsonOld[s + 1] == 'd' || jsonOld[s + 1] == 'i')) {
+
+            } else {
+                jsonNew += jsonOld[s]
+            }
+        }
+        return jsonNew
     }
 
 

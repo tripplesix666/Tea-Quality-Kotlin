@@ -27,4 +27,5 @@
     <string name="welcome_sign_up">Добро пожаловать, \nЗарегистрируйтесь чтобы продолжить</string>
     <string name="welcome_sign_in">Добро пожаловать, \nВойдите чтобы продолжить</string>
     <string name="app_icon">appIcon</string>
+    <string name="ruble">₽</string>
 </resources>
